@@ -2,6 +2,7 @@ package com.testelib;
 
 import com.testelib.model.Pessoa;
 import com.testelib.model.PessoaTelefone;
+import com.testelib.repository.PessoaRepository;
 import com.testelib.service.PessoaService;
 
 import java.sql.Date;
@@ -13,12 +14,18 @@ public class Main {
 
     public static void main(String[] args){
 
+        PessoaRepository pessoaRepository = new PessoaRepository();
         Pessoa p = loadData();
 
         PessoaService pessoaService = new PessoaService();
 
-        pessoaService.save(p);
-        System.out.println(p.toString());
+        // pessoaService.save(p);
+        // System.out.println(p.toString());
+
+        // pessoaService.get();
+
+        Object obj = pessoaRepository.getByID(Pessoa.class, 32);
+        System.out.println(obj.toString());
     }
 
 
@@ -27,7 +34,7 @@ public class Main {
         Pessoa p = new Pessoa();
 
         // dados da pessoa
-        p.setNome("Geovane de Paula Araújo " + UUID.randomUUID().toString());
+        p.setNome("Stefanny Naara Araújo " + UUID.randomUUID().toString());
         p.setIdade(27);
 
         // dados de documentos
