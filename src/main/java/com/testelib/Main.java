@@ -1,5 +1,7 @@
 package com.testelib;
 
+import com.jatom.enuns.JAtomTypes;
+import com.jatom.model.JAtomParameters;
 import com.testelib.model.Pessoa;
 import com.testelib.model.PessoaTelefone;
 import com.testelib.repository.PessoaRepository;
@@ -17,15 +19,15 @@ public class Main {
         PessoaRepository pessoaRepository = new PessoaRepository();
         Pessoa p = loadData();
 
-        PessoaService pessoaService = new PessoaService();
 
-        // pessoaService.save(p);
-        // System.out.println(p.toString());
+        pessoaRepository.save(p);
+        System.out.println(p.toString());
+        JAtomParameters jp = new JAtomParameters();
+        jp.put(JAtomTypes.SQL, "select * from pessoa");
+        System.out.printf(pessoaRepository.get(jp).toString());
 
-        // pessoaService.get();
-
-        Object obj = pessoaRepository.getByID(Pessoa.class, 32);
-        System.out.println(obj.toString());
+        //Object obj = pessoaRepository.getByID(Pessoa.class, 32);
+        // System.out.println(obj.toString());
     }
 
 
@@ -34,7 +36,7 @@ public class Main {
         Pessoa p = new Pessoa();
 
         // dados da pessoa
-        p.setNome("Stefanny Naara Araújo " + UUID.randomUUID().toString());
+        p.setNome("Geovane Araújo " + UUID.randomUUID().toString());
         p.setIdade(27);
 
         // dados de documentos
