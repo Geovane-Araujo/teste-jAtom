@@ -21,13 +21,13 @@ public class Main {
 
 
         pessoaRepository.save(p);
-        System.out.println(p.toString());
+        // System.out.println(p.toString());
         JAtomParameters jp = new JAtomParameters();
         jp.put(JAtomTypes.SQL, "select * from pessoa");
-        System.out.printf(pessoaRepository.get(jp).toString());
+        // System.out.printf(pessoaRepository.get(jp).toString());
 
-        //Object obj = pessoaRepository.getByID(Pessoa.class, 32);
-        // System.out.println(obj.toString());
+        Object obj = pessoaRepository.getByID(Pessoa.class, 4);
+        System.out.println(obj.toString());
     }
 
 
@@ -36,7 +36,7 @@ public class Main {
         Pessoa p = new Pessoa();
 
         // dados da pessoa
-        p.setNome("Geovane Araújo " + UUID.randomUUID().toString());
+        p.setNome("Edna de Souza Bezerra " + UUID.randomUUID().toString());
         p.setIdade(27);
 
         // dados de documentos
