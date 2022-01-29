@@ -1,10 +1,7 @@
 package com.testelib.model;
 
 
-import com.jatom.anotations.Id;
-import com.jatom.anotations.ListObject;
-import com.jatom.anotations.SimpleObject;
-import com.jatom.anotations.TableName;
+import com.jatom.anotations.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -23,6 +20,11 @@ public class Pessoa {
     private String nome;
 
     private int idade;
+
+    @Ignore
+    private String descricaoTipoPessoa;
+
+    private int idTipoPessoa;
 
     @SimpleObject
     private PessoaEndereco pesoPessoaEndereco = new PessoaEndereco();
