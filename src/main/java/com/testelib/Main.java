@@ -22,8 +22,8 @@ public class Main {
 
         pessoaRepository.save(p);
         // System.out.println(p.toString());
-        JAtomParameters jp = new JAtomParameters();
-        jp.put(JAtomTypes.SQL, "select * from pessoa");
+        //JAtomParameters jp = new JAtomParameters();
+        // jp.put(JAtomTypes.SQL, "select * from pessoa");
         // System.out.printf(pessoaRepository.get(jp).toString());
 
         Object obj = pessoaRepository.getByID(Pessoa.class, 4);
@@ -38,6 +38,7 @@ public class Main {
         // dados da pessoa
         p.setNome("Edna de Souza Bezerra " + UUID.randomUUID().toString());
         p.setIdade(27);
+        p.setIdTipoPessoa(2);
 
         // dados de documentos
         p.getDocumentos().getCpf().setCpf(UUID.randomUUID().toString().substring(0,10));

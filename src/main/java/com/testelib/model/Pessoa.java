@@ -11,6 +11,7 @@ import java.util.List;
 @ToString
 @Getter
 @Setter
+@Union
 @TableName("pessoa")
 public class Pessoa {
 
@@ -22,6 +23,7 @@ public class Pessoa {
     private int idade;
 
     @Ignore
+    @Join(reference = TipoPessoa.class,columnName = "descricao")
     private String descricaoTipoPessoa;
 
     private int idTipoPessoa;

@@ -39,7 +39,8 @@ create table if not exists pessoa(
 
     id serial PRIMARY key,
     nome varchar(250),
-    idade int
+    idade int,
+    idTipoPessoa
 );
 
 create table if not exists documentos(
@@ -47,5 +48,15 @@ create table if not exists documentos(
     id serial PRIMARY key,
     idpessoa int
 );
+
+
+create table tipo_pessoa(
+
+    id serial primary key,
+    descricao varchar
+);
+
+
+insert into tipo_pessoa(descricao) values('Fornecedor'),('Cliente'),('Usuário')
 
 
