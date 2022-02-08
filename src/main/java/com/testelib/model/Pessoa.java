@@ -5,6 +5,8 @@ import com.jatom.anotations.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @TableName("pessoa")
-public class Pessoa {
+public class Pessoa implements Serializable {
 
     @Id(value = "id_pessoa")
     private int id;
