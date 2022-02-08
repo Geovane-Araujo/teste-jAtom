@@ -1,6 +1,7 @@
 package com.testelib.model;
 
 
+import com.google.gson.annotations.SerializedName;
 import com.jatom.anotations.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,8 +26,10 @@ public class Pessoa implements Serializable {
 
     @Ignore
     @Join(reference = TipoPessoa.class,columnName = "descricao",columnReference = "idTipoPessoa")
+    @SerializedName(value="descricaoTipoPessoa",alternate = "descricaotipopessoa")
     private String descricaoTipoPessoa;
 
+    @SerializedName(value="idTipoPessoa",alternate = "idtipopessoa")
     private int idTipoPessoa;
 
     @SimpleObject
