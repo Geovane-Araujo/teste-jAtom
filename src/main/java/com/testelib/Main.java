@@ -26,7 +26,7 @@ public class Main {
         // jp.put(JAtomTypes.SQL, "select * from pessoa");
         // System.out.printf(pessoaRepository.get(jp).toString());
 
-        Object obj = pessoaRepository.getByID(Pessoa.class, 4);
+        Object obj = pessoaRepository.getByID(Pessoa.class, 32);
         System.out.println(obj.toString());
     }
 
