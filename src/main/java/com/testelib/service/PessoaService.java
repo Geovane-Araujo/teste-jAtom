@@ -12,7 +12,7 @@ public class PessoaService {
 
     PessoaRepository pessoaRepository = new PessoaRepository();
 
-    public void save(Pessoa p){
+    public void save(Pessoa p) throws Exception {
         pessoaRepository.save(p);
     }
 
@@ -20,7 +20,7 @@ public class PessoaService {
         pessoaRepository.save(p,db);
     }
 
-    public void get(){
+    public void get() throws Exception {
         JAtomParameters jp = new JAtomParameters();
         jp.put(JAtomTypes.SQL, "select * from pessoa");
         Object o = pessoaRepository.get(jp);
