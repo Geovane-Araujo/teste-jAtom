@@ -16,7 +16,7 @@ public class PessoaService {
         pessoaRepository.save(p);
     }
 
-    public void save(Pessoa p, String db){
+    public void save(Pessoa p, String db) throws Exception {
         pessoaRepository.save(p,db);
     }
 
