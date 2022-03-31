@@ -40,7 +40,7 @@ create table if not exists pessoa(
     id serial PRIMARY key,
     nome varchar(250),
     idade int,
-    idTipoPessoa
+    idTipoPessoa int
 );
 
 create table if not exists documentos(
