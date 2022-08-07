@@ -1,11 +1,8 @@
 package com.testelib;
 
-import com.jatom.enuns.JAtomTypes;
-import com.jatom.model.JAtomParameters;
+import com.jatom.migrationdatabase.MigrationDataBase;
 import com.testelib.model.Pessoa;
 import com.testelib.model.PessoaTelefone;
-import com.testelib.repository.PessoaRepository;
-import com.testelib.service.PessoaService;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -16,18 +13,21 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        PessoaRepository pessoaRepository = new PessoaRepository();
-        Pessoa p = loadData();
-
-
-        pessoaRepository.save(p);
+//        PessoaRepository pessoaRepository = new PessoaRepository();
+//        Pessoa p = loadData();
+//
+//
+//        pessoaRepository.save(p);
         // System.out.println(p.toString());
         //JAtomParameters jp = new JAtomParameters();
         // jp.put(JAtomTypes.SQL, "select * from pessoa");
         // System.out.printf(pessoaRepository.get(jp).toString());
+        MigrationDataBase mig = new MigrationDataBase();
 
-        Object obj = pessoaRepository.getByID(Pessoa.class, 32);
-        System.out.println(obj.toString());
+        mig.executeMigrationDataBaseResourcesIntoSchema();
+
+//        Object obj = pessoaRepository.getByID(Pessoa.class, 32);
+//        System.out.println(obj.toString());
     }
 
 

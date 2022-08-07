@@ -1,6 +1,6 @@
 package com.testelib.repository;
 
-import com.jatom.services.Atom;
+import com.jatom.utils.Atom;
 
 public class PessoaRepository extends Atom {
 }

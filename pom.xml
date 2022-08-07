@@ -23,9 +23,10 @@
         <dependency>
             <groupId>org.atom</groupId>
             <artifactId>atom-framework</artifactId>
-            <version>3.0</version>
+            <version>3.1.13</version>
             <scope>compile</scope>
         </dependency>
+
     </dependencies>
 
     <properties>
