@@ -23,7 +23,6 @@ public class Main {
         // jp.put(JAtomTypes.SQL, "select * from pessoa");
         // System.out.printf(pessoaRepository.get(jp).toString());
         MigrationDataBase mig = new MigrationDataBase();
-
         mig.executeMigrationDataBaseResourcesIntoSchema();
 
 //        Object obj = pessoaRepository.getByID(Pessoa.class, 32);
