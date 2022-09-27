@@ -1,6 +1,5 @@
 package com.testelib.model;
 
-
 import com.google.gson.annotations.SerializedName;
 import com.jatom.anotations.*;
 import lombok.Getter;

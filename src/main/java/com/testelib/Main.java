@@ -1,6 +1,9 @@
 package com.testelib;
 
-import com.jatom.migrationdatabase.MigrationDataBase;
+
+import com.jatom.enuns.JAtomTypes;
+import com.jatom.model.JAtomParameters;
+import com.jatom.security.Security;
 import com.testelib.model.Pessoa;
 import com.testelib.model.PessoaTelefone;
 
@@ -19,11 +22,16 @@ public class Main {
 //
 //        pessoaRepository.save(p);
         // System.out.println(p.toString());
-        //JAtomParameters jp = new JAtomParameters();
-        // jp.put(JAtomTypes.SQL, "select * from pessoa");
-        // System.out.printf(pessoaRepository.get(jp).toString());
-        MigrationDataBase mig = new MigrationDataBase();
-        mig.executeMigrationDataBaseResourcesIntoSchema();
+//        AtomParameters jp = new JAtomParameters();
+//        jp.put(JAtomTypes.SQL, "select * from pessoa");
+//        System.out.printf(pessoaRepository.get(jp).toString());
+        //MigrationDataBase mig = new MigrationDataBase();
+        //mig.executeMigrationDataBaseResourcesIntoSchema();
+        Security sec = new Security();
+        String token = sec.generateToken("Usuario");
+        boolean valid = sec.validToken(token);
+        System.out.println(token);
+
 
 //        Object obj = pessoaRepository.getByID(Pessoa.class, 32);
 //        System.out.println(obj.toString());
