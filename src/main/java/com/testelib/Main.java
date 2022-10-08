@@ -1,11 +1,11 @@
 package com.testelib;
 
 
-import com.jatom.enuns.JAtomTypes;
-import com.jatom.model.JAtomParameters;
+import com.jatom.ConnectionDatabase;
 import com.jatom.security.Security;
 import com.testelib.model.Pessoa;
 import com.testelib.model.PessoaTelefone;
+import com.testelib.repository.PessoaRepository;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -16,17 +16,72 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-//        PessoaRepository pessoaRepository = new PessoaRepository();
-//        Pessoa p = loadData();
-//
-//
-//        pessoaRepository.save(p);
+
+        new Thread(){
+            @Override
+            public void run() {
+                int i = 1;
+                while (i < 500){
+                    PessoaRepository pessoaRepository = new PessoaRepository();
+                    ConnectionDatabase.dbname = "HUB_PLATFORM_001";
+                    Pessoa p = loadData("1");
+                    pessoaRepository.save(p);
+                    i++;
+                }
+            }
+        }.start();
+
+        new Thread(){
+            @Override
+            public void run() {
+                int i = 1;
+                while (i < 500){
+                    PessoaRepository pessoaRepository = new PessoaRepository();
+                    Pessoa p = loadData("2");
+                    ConnectionDatabase.dbname = "HUB_PLATFORM_002";
+                    pessoaRepository.save(p);
+                    i++;
+                }
+            }
+        }.start();
+
+        new Thread(){
+            @Override
+            public void run() {
+                int i = 1;
+                while (i < 500){
+                    PessoaRepository pessoaRepository = new PessoaRepository();
+                    Pessoa p = loadData("3");
+                    ConnectionDatabase.dbname = "HUB_PLATFORM_003";
+                    pessoaRepository.save(p);
+
+                    i++;
+                }
+            }
+        }.start();
+
+
+        new Thread(){
+            @Override
+            public void run() {
+                int i = 1;
+                while (i < 500){
+                    PessoaRepository pessoaRepository = new PessoaRepository();
+                    Pessoa p = loadData("4");
+                    ConnectionDatabase.dbname = "HUB_PLATFORM_004";
+                    pessoaRepository.save(p);
+                    i++;
+                }
+            }
+        }.start();
+
+
+
         // System.out.println(p.toString());
 //        AtomParameters jp = new JAtomParameters();
 //        jp.put(JAtomTypes.SQL, "select * from pessoa");
 //        System.out.printf(pessoaRepository.get(jp).toString());
-        //MigrationDataBase mig = new MigrationDataBase();
-        //mig.executeMigrationDataBaseResourcesIntoSchema();
+
         Security sec = new Security();
         String token = sec.generateToken("Usuario");
         boolean valid = sec.validToken(token);
@@ -38,12 +93,12 @@ public class Main {
     }
 
 
-    public static Pessoa loadData(){
+    public static Pessoa loadData(String schema){
 
         Pessoa p = new Pessoa();
 
         // dados da pessoa
-        p.setNome("Edna de Souza Bezerra " + UUID.randomUUID().toString());
+        p.setNome("Edna de Souza Bezerra " + schema +" - " + UUID.randomUUID().toString());
         p.setIdade(27);
         p.setIdTipoPessoa(2);
 
