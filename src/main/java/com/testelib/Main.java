@@ -1,11 +1,9 @@
 package com.testelib;
 
 
-import com.jatom.migrationdatabase.postgres.MigrationDataBase;
 import com.jatom.security.Security;
 import com.testelib.model.Pessoa;
 import com.testelib.model.PessoaTelefone;
-import com.testelib.repository.PessoaRepository;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -16,35 +14,35 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        MigrationDataBase mig = new MigrationDataBase();
-        mig.createInformationSchemaIntoSchema();
-        mig.executeMigrationDataBaseResourcesIntoSchema();
+//        MigrationDataBase mig = new MigrationDataBase();
+//        mig.createInformationSchemaIntoSchema();
+//        mig.executeMigrationDataBaseResourcesIntoSchema();
 
-        new Thread(){
-            @Override
-            public void run() {
-                int i = 1;
-                while (i < 500){
-                    PessoaRepository pessoaRepository = new PessoaRepository();
-                    Pessoa p = loadData("1");
-                    pessoaRepository.save(p,"HUB_PLATFORM_001");
-                    i++;
-                }
-            }
-        }.start();
-
-        new Thread(){
-            @Override
-            public void run() {
-                int i = 1;
-                while (i < 500){
-                    PessoaRepository pessoaRepository = new PessoaRepository();
-                    Pessoa p = loadData("2");
-                    pessoaRepository.save(p,"HUB_PLATFORM_002");
-                    i++;
-                }
-            }
-        }.start();
+//        new Thread(){
+//            @Override
+//            public void run() {
+//                int i = 1;
+//                while (i < 500){
+//                    PessoaRepository pessoaRepository = new PessoaRepository();
+//                    Pessoa p = loadData("1");
+//                    pessoaRepository.save(p,"HUB_PLATFORM_001");
+//                    i++;
+//                }
+//            }
+//        }.start();
+//
+//        new Thread(){
+//            @Override
+//            public void run() {
+//                int i = 1;
+//                while (i < 500){
+//                    PessoaRepository pessoaRepository = new PessoaRepository();
+//                    Pessoa p = loadData("2");
+//                    pessoaRepository.save(p,"HUB_PLATFORM_002");
+//                    i++;
+//                }
+//            }
+//        }.start();
 
 //        new Thread(){
 //            @Override
@@ -84,7 +82,8 @@ public class Main {
 //        System.out.printf(pessoaRepository.get(jp).toString());
 
         Security sec = new Security();
-        String token = sec.generateToken("Usuario");
+        String token = sec.generateToken("1055");
+        System.out.println(token);
         boolean valid = sec.validToken(token);
         System.out.println(token);
 

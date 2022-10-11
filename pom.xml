@@ -32,13 +32,6 @@
             <version>4.12</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>org.atom</groupId>
-            <artifactId>atom-framework</artifactId>
-            <version>3.2.0</version>
-            <scope>compile</scope>
-        </dependency>
-
     </dependencies>
 
     <properties>
