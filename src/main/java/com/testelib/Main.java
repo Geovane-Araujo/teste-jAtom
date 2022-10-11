@@ -1,7 +1,7 @@
 package com.testelib;
 
 
-import com.jatom.ConnectionDatabase;
+import com.jatom.migrationdatabase.postgres.MigrationDataBase;
 import com.jatom.security.Security;
 import com.testelib.model.Pessoa;
 import com.testelib.model.PessoaTelefone;
@@ -16,6 +16,9 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
+        MigrationDataBase mig = new MigrationDataBase();
+        mig.createInformationSchemaIntoSchema();
+        mig.executeMigrationDataBaseResourcesIntoSchema();
 
         new Thread(){
             @Override
@@ -23,9 +26,8 @@ public class Main {
                 int i = 1;
                 while (i < 500){
                     PessoaRepository pessoaRepository = new PessoaRepository();
-                    ConnectionDatabase.dbname = "HUB_PLATFORM_001";
                     Pessoa p = loadData("1");
-                    pessoaRepository.save(p);
+                    pessoaRepository.save(p,"HUB_PLATFORM_001");
                     i++;
                 }
             }
@@ -38,42 +40,41 @@ public class Main {
                 while (i < 500){
                     PessoaRepository pessoaRepository = new PessoaRepository();
                     Pessoa p = loadData("2");
-                    ConnectionDatabase.dbname = "HUB_PLATFORM_002";
-                    pessoaRepository.save(p);
+                    pessoaRepository.save(p,"HUB_PLATFORM_002");
                     i++;
                 }
             }
         }.start();
 
-        new Thread(){
-            @Override
-            public void run() {
-                int i = 1;
-                while (i < 500){
-                    PessoaRepository pessoaRepository = new PessoaRepository();
-                    Pessoa p = loadData("3");
-                    ConnectionDatabase.dbname = "HUB_PLATFORM_003";
-                    pessoaRepository.save(p);
-
-                    i++;
-                }
-            }
-        }.start();
-
-
-        new Thread(){
-            @Override
-            public void run() {
-                int i = 1;
-                while (i < 500){
-                    PessoaRepository pessoaRepository = new PessoaRepository();
-                    Pessoa p = loadData("4");
-                    ConnectionDatabase.dbname = "HUB_PLATFORM_004";
-                    pessoaRepository.save(p);
-                    i++;
-                }
-            }
-        }.start();
+//        new Thread(){
+//            @Override
+//            public void run() {
+//                int i = 1;
+//                while (i < 500){
+//                    PessoaRepository pessoaRepository = new PessoaRepository();
+//                    Pessoa p = loadData("3");
+//                    ConnectionDatabase.dbname = "HUB_PLATFORM_003";
+//                    pessoaRepository.save(p);
+//
+//                    i++;
+//                }
+//            }
+//        }.start();
+//
+//
+//        new Thread(){
+//            @Override
+//            public void run() {
+//                int i = 1;
+//                while (i < 500){
+//                    PessoaRepository pessoaRepository = new PessoaRepository();
+//                    Pessoa p = loadData("4");
+//                    ConnectionDatabase.dbname = "HUB_PLATFORM_004";
+//                    pessoaRepository.save(p);
+//                    i++;
+//                }
+//            }
+//        }.start();
 
 
 
