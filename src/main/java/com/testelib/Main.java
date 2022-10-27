@@ -81,10 +81,11 @@ public class Main {
 //        System.out.printf(pessoaRepository.get(jp).toString());
 
         Security sec = new Security();
-        String token = sec.generateToken("1055");
-        System.out.println(token);
-        boolean valid = sec.validToken(token);
-        System.out.println(token);
+        //String token = sec.generateToken("1055");
+        sec.outro();
+        //System.out.println(token);
+       // boolean valid = sec.validToken(token);
+        //System.out.println(token);
 
 
 //        Object obj = pessoaRepository.getByID(Pessoa.class, 32);
