@@ -1,5 +1,6 @@
 package com.testelib;
 
+import com.jatom.migrationdatabase.postgres.MigrationDataBase;
 import com.jatom.security.Security;
 import com.testelib.model.Pessoa;
 import com.testelib.model.PessoaTelefone;
@@ -13,9 +14,9 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-//        MigrationDataBase mig = new MigrationDataBase();
-//        mig.createInformationSchemaIntoSchema();
-//        mig.executeMigrationDataBaseResourcesIntoSchema();
+        MigrationDataBase mig = new MigrationDataBase();
+        mig.createInformationSchemaIntoSchema();
+        mig.executeMigrationDataBaseResourcesIntoSchema();
 
 //        new Thread(){
 //            @Override
